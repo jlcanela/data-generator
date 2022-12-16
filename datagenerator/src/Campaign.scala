@@ -4,16 +4,18 @@ object Campaign {
     
     val random = new scala.util.Random
     
+    def gen[T](arr: Array[T]) = arr(random.nextInt(arr.length))
+
     val locations = Array("FRA", "SPA")
-    def genLocation = locations(random.nextInt(locations.length))
+    def genLocation = gen(locations)
     
     def genName(id: Int) = s"campaign${id}"
 
     val segmentAges = Array("AGE_0_17", "AGE_18_20", "AGE_21_100")
-    def genAge = segmentAges(random.nextInt(segmentAges.length))
+    def genAge = gen(segmentAges) 
 
     val segmentGenders = Array("GENDER_M", "GENDER_F", "GENDER_BOTH")
-    def genGender = segmentGenders(random.nextInt(segmentGenders.length))
+    def genGender = gen(segmentGenders)
 
     def genSegments = Array(genAge, genGender).mkString(";")
 
